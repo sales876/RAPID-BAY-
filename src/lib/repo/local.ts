@@ -210,7 +210,7 @@ export class LocalRepository implements Repository {
           kind: 'stage_assigned', audience: 'worker', workerId: w.id,
           jobId: job.id, stageOrder: stages[0].stageOrder,
           title: `New job: ${job.plateNumber}`,
-          body: `${stages[0].name} · ${job.serviceName} — tap Accept to start the timer.`,
+          body: `${stages[0].name} · ${job.serviceName}. Tap Accept to start the timer.`,
         });
       }
     }
@@ -238,7 +238,7 @@ export class LocalRepository implements Repository {
         kind: 'stage_assigned', audience: 'worker', workerId: w.id,
         jobId: job.id, stageOrder: stage.stageOrder,
         title: `New job: ${job.plateNumber}`,
-        body: `${stage.name} — tap Accept to start the timer.`,
+        body: `${stage.name}. Tap Accept to start the timer.`,
       });
     }
     return this.touch(job);
@@ -300,7 +300,7 @@ export class LocalRepository implements Repository {
 
     if (actual < stage.expectedDuration * FRAUD_FLAG_RATIO) {
       stage.flagged = true;
-      stage.flagReason = `Completed in ${actual} min against a ${stage.expectedDuration} min target — under ${Math.round(FRAUD_FLAG_RATIO * 100)}% of target.`;
+      stage.flagReason = `Completed in ${actual} min against a ${stage.expectedDuration} min target, under ${Math.round(FRAUD_FLAG_RATIO * 100)}% of target.`;
     }
 
     const allDone = job.stages.every((s) => s.status === 'completed');
@@ -311,7 +311,7 @@ export class LocalRepository implements Repository {
       kind: 'stage_completed', audience: 'staff', workerId: null,
       jobId: job.id, stageOrder: stage.stageOrder,
       title: `${workerName} finished ${stage.name}`,
-      body: `${job.plateNumber} · ${actual} min (target ${stage.expectedDuration} min)${stage.flagged ? ' — flagged for review' : ''}`,
+      body: `${job.plateNumber} · ${actual} min (target ${stage.expectedDuration} min)${stage.flagged ? ', flagged for review' : ''}`,
     });
 
     return this.touch(job);
@@ -334,7 +334,7 @@ export class LocalRepository implements Repository {
           kind: 'stage_assigned', audience: 'worker', workerId: w.id,
           jobId: job.id, stageOrder: stage.stageOrder,
           title: `New job: ${job.plateNumber}`,
-          body: `${stage.name} — tap Accept to start the timer.`,
+          body: `${stage.name}. Tap Accept to start the timer.`,
         });
       }
     }

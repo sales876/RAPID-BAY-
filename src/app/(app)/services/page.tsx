@@ -108,7 +108,7 @@ export default function ServicesPage() {
                         step={5}
                         disabled={staged}
                         defaultValue={service.baseDuration}
-                        title={staged ? 'Staged service — edit durations in Multi-stage services below' : undefined}
+                        title={staged ? 'Staged service: edit durations in Multi-stage services below' : undefined}
                         onBlur={async (e) => {
                           const value = Number(e.target.value);
                           if (!value || value === service.baseDuration) return;
@@ -206,7 +206,7 @@ export default function ServicesPage() {
         <div className="card-head">
           <span className="card-title">Multi-stage services</span>
           <span className="card-note">
-            Give a service two or more legs — e.g. one worker washes the exterior, then two
+            Give a service two or more legs: one worker washes the exterior, then two
             workers detail the interior. Each stage gets its own worker count, target time and
             timer; the job hands off from one to the next automatically.
           </span>
@@ -218,7 +218,7 @@ export default function ServicesPage() {
               <div key={service.id} className="stack gap-8" style={{ paddingBottom: 14, borderBottom: '1px solid var(--line)' }}>
                 <div className="row gap-8">
                   <span className="strong">{service.serviceName}</span>
-                  {stages.length === 0 && <span className="tiny muted">Single stage — the whole job, one worker</span>}
+                  {stages.length === 0 && <span className="tiny muted">Single stage: the whole job, one worker</span>}
                   <div className="spacer" />
                   <button className="btn btn-sm" onClick={() => addStage(service.id)}>
                     + Add stage
@@ -360,7 +360,7 @@ export default function ServicesPage() {
         <div className="card-head">
           <span className="card-title">Duration matrix</span>
           <span className="card-note">
-            Minutes per car type and service — single-stage services only. Grey values are
+            Minutes per car type and service, single-stage services only. Grey values are
             inherited; type a number to override, clear the field to inherit again. Staged
             services aren't shown here; edit their per-stage timing above instead.
           </span>

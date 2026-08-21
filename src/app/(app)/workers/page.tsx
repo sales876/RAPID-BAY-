@@ -116,7 +116,7 @@ export default function WorkersPage() {
                       }}
                     >
                       {diff === null
-                        ? '—'
+                        ? '-'
                         : diff > 0
                           ? `${Math.round(diff)} min slower`
                           : diff < 0
@@ -124,10 +124,10 @@ export default function WorkersPage() {
                             : 'On target'}
                     </td>
                     <td className="right mono">
-                      {row.onTimeRate === null ? '—' : `${Math.round(row.onTimeRate * 100)}%`}
+                      {row.onTimeRate === null ? '-' : `${Math.round(row.onTimeRate * 100)}%`}
                     </td>
                     <td className="right mono" style={{ color: row.flagged > 0 ? 'var(--danger)' : undefined }}>
-                      {row.flagged || '—'}
+                      {row.flagged || '-'}
                     </td>
                   </tr>
                 );
@@ -142,7 +142,7 @@ export default function WorkersPage() {
           <div className="card-head">
             <span className="card-title">Roster</span>
             <span className="card-note">
-              Removing a worker keeps their history — they simply stop appearing for assignment.
+              Removing a worker keeps their history: they simply stop appearing for assignment.
               A staff-portal login is created in Supabase Authentication, then linked to a name here.
             </span>
           </div>

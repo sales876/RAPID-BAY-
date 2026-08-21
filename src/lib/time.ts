@@ -29,9 +29,9 @@ const longDateFmt = new Intl.DateTimeFormat('en-GB', {
 
 /** `10:32 AM` in branch time. */
 export function formatClock(iso: string | null | undefined): string {
-  if (!iso) return '—';
+  if (!iso) return '-';
   const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return '—';
+  if (Number.isNaN(d.getTime())) return '-';
   return timeFmt.format(d).toUpperCase();
 }
 
@@ -70,7 +70,7 @@ export function formatCountdown(totalSeconds: number): string {
 
 /** `35 min`, `1h 15m`. */
 export function formatMinutes(minutes: number | null | undefined): string {
-  if (minutes === null || minutes === undefined) return '—';
+  if (minutes === null || minutes === undefined) return '-';
   const m = Math.round(minutes);
   if (m < 60) return `${m} min`;
   const h = Math.floor(m / 60);
@@ -89,7 +89,7 @@ export function formatAvailability(seconds: number): string {
 
 /** `4 min under target` / `8 min over target`. */
 export function formatPerformance(delta: number | null): string {
-  if (delta === null) return '—';
+  if (delta === null) return '-';
   const m = Math.abs(Math.round(delta));
   if (m === 0) return 'On target';
   return delta < 0 ? `${m} min under target` : `${m} min over target`;

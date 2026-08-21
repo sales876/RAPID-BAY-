@@ -34,7 +34,7 @@ export function WorkerMultiPicker({
     setSelected((prev) => {
       if (prev.includes(id)) return prev.filter((x) => x !== id);
       if (required <= 1) return [id];
-      if (prev.length >= required) return prev; // at capacity — deselect one first
+      if (prev.length >= required) return prev; // at capacity, deselect one first
       return [...prev, id];
     });
   }
@@ -120,14 +120,14 @@ function Option({
         ? `Overdue +${formatCountdown(worker.currentStage?.remainingSeconds ?? 0)}`
         : Number.isFinite(worker.availableInSeconds)
           ? `In ~${Math.ceil(worker.availableInSeconds / 60)} min`
-          : '—';
+          : '-';
 
   return (
     <button
       type="button"
       className="picker-option"
       aria-pressed={selected}
-      aria-label={`${selected ? 'Remove' : 'Add'} ${worker.name} — ${detail}, ${when}`}
+      aria-label={`${selected ? 'Remove' : 'Add'} ${worker.name}, ${detail}, ${when}`}
       onClick={onSelect}
     >
       <span

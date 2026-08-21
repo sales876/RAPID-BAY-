@@ -124,7 +124,7 @@ export default function DashboardPage() {
             {flagged.length} {flagged.length === 1 ? 'completion needs' : 'completions need'} review
           </span>
           <span aria-hidden>·</span>
-          <span>Finished in well under the target time — worth a quick check.</span>
+          <span>Finished in well under the target time, worth a quick check.</span>
           <div className="spacer" />
           <button className="btn btn-sm" onClick={() => setFilter('flagged')}>
             Show flagged

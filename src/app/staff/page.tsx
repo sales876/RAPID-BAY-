@@ -43,7 +43,7 @@ export default function StaffJobsPage() {
   if (!workerId) {
     return (
       <div className="banner banner-alert">
-        This login isn&apos;t linked to a worker profile yet — ask an admin to connect your
+        This login isn&apos;t linked to a worker profile yet. Ask an admin to connect your
         account on the Workers page.
       </div>
     );
@@ -71,7 +71,7 @@ export default function StaffJobsPage() {
             <div className="spacer" />
             <span className="pill pill-assigned">
               <span className="pill-dot" aria-hidden />
-              New — needs acceptance
+              New · needs acceptance
             </span>
           </div>
 

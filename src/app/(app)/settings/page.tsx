@@ -171,7 +171,7 @@ export default function SettingsPage() {
           <span className="card-title">Roles</span>
           <span className="card-note">
             Worker logins are created in Supabase Authentication, then linked to a name on the
-            Workers page. A worker's account only ever sees stages assigned to them — enforced
+            Workers page. A worker's account only ever sees stages assigned to them, enforced
             again at the database, not just hidden in this UI.
           </span>
         </div>
@@ -195,9 +195,9 @@ export default function SettingsPage() {
               ].map(([label, admin, reception, worker]) => (
                 <tr key={label as string}>
                   <td>{label}</td>
-                  <td>{admin ? '✓' : '—'}</td>
-                  <td>{reception ? '✓' : '—'}</td>
-                  <td>{worker ? '✓' : '—'}</td>
+                  <td>{admin ? '✓' : '-'}</td>
+                  <td>{reception ? '✓' : '-'}</td>
+                  <td>{worker ? '✓' : '-'}</td>
                 </tr>
               ))}
             </tbody>
@@ -212,17 +212,17 @@ export default function SettingsPage() {
         </div>
         <div className="card-body stack gap-8 small">
           <p style={{ margin: 0 }}>
-            A stage completed in under half its target time is <strong>automatically flagged</strong> —
+            A stage completed in under half its target time is <strong>automatically flagged</strong>,
             visible on the Dashboard and in Reports, with the exact minutes shown. No one has to
             go looking for it.
           </p>
           <p style={{ margin: 0 }}>
             Every completion records <strong>who</strong> completed it, separately from who the job
-            is assigned to — so reassigning a stage never blurs the accountability trail.
+            is assigned to, so reassigning a stage never blurs the accountability trail.
           </p>
           <p style={{ margin: 0 }}>
             Once every stage is done, the car isn&apos;t considered handed back until reception or
-            an admin taps <strong>Confirm handover</strong> — a second, independent check that
+            an admin taps <strong>Confirm handover</strong>, a second, independent check that
             doesn&apos;t rely on the worker&apos;s own claim.
           </p>
         </div>

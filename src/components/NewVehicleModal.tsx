@@ -83,7 +83,7 @@ export function NewVehicleModal({ onClose }: { onClose(): void }) {
           for (const id of workerIds) {
             void notifyPush(supabase, { audience: 'worker', workerId: id }, {
               title: `New job: ${plateNumber.trim().toUpperCase()}`,
-              body: `${stage1?.name ?? 'Job'} — tap Accept to start the timer.`,
+              body: `${stage1?.name ?? 'Job'}. Tap Accept to start the timer.`,
             });
           }
         }
@@ -190,7 +190,7 @@ export function NewVehicleModal({ onClose }: { onClose(): void }) {
               <span aria-hidden>·</span>
               <span>
                 {startNow && workerIds.length > 0
-                  ? `Waiting for ${selectedNames.join(' + ')} to accept — timer starts on acceptance`
+                  ? `Waiting for ${selectedNames.join(' + ')} to accept, timer starts on acceptance`
                   : 'Vehicle will be queued as Waiting until stage 1 is assigned'}
               </span>
               <div className="spacer" />
@@ -198,7 +198,7 @@ export function NewVehicleModal({ onClose }: { onClose(): void }) {
             </div>
 
             <div className="fieldset-title">
-              Assign stage 1{stage1 ? ` — ${stage1.name}` : ''}
+              Assign stage 1{stage1 ? `: ${stage1.name}` : ''}
             </div>
 
             <div className="span-2 field">
@@ -231,7 +231,7 @@ export function NewVehicleModal({ onClose }: { onClose(): void }) {
               {stages.length > 1 && (
                 <span className="field-hint">
                   Later stages ({stages.slice(1).map((s) => s.name).join(', ')}) are assigned once
-                  the stage before them finishes — whoever is free at that moment, not decided now.
+                  the stage before them finishes: whoever is free at that moment, not decided now.
                 </span>
               )}
             </div>

@@ -47,11 +47,11 @@ export function exportToExcel({
   const performance = buildWorkerPerformance(liveWorkers, liveJobs, '');
 
   const workbook = XLSX.utils.book_new();
-  const round1 = (n: number | null) => (n === null ? '—' : Math.round(n * 10) / 10);
+  const round1 = (n: number | null) => (n === null ? '-' : Math.round(n * 10) / 10);
 
   // --- Sheet 1: Summary ----------------------------------------------------
   const summaryRows: (string | number)[][] = [
-    [`${BUSINESS.name} — Operations Report`],
+    [`${BUSINESS.name} · Operations Report`],
     [BUSINESS.branch],
     [periodLabel],
     [`Generated ${new Date().toLocaleString('en-GB')}`],
@@ -97,7 +97,7 @@ export function exportToExcel({
       round1(p.avgTarget),
       round1(p.avgActual),
       round1(p.avgDifference),
-      p.onTimeRate === null ? '—' : Math.round(p.onTimeRate * 100),
+      p.onTimeRate === null ? '-' : Math.round(p.onTimeRate * 100),
       p.revenue,
     ]),
   ];

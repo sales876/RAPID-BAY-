@@ -93,7 +93,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="sidebar-foot stack gap-8">
           {mode === 'demo' && (
             <div className="tiny muted">
-              Demo mode — data is stored in this browser. Add Supabase credentials to go live.
+              Demo mode: data is stored in this browser. Add Supabase credentials to go live.
             </div>
           )}
           <div className="row gap-8">

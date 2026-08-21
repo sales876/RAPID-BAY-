@@ -16,7 +16,7 @@ export function StageIndicator({ job }: { job: LiveJob }) {
     if (!pending) return null;
     return (
       <span className="tiny" style={{ display: 'block', color: 'var(--warn)' }}>
-        Pending — waiting for {current!.workerNames.join(' + ')} to accept
+        Pending, waiting for {current!.workerNames.join(' + ')} to accept
       </span>
     );
   }

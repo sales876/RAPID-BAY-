@@ -171,7 +171,7 @@ function completeStage(job: Job, stageOrder: number, actualMinutes: number, comp
   stage.completedBy = completedBy;
   if (actualMinutes < stage.expectedDuration * FRAUD_FLAG_RATIO) {
     stage.flagged = true;
-    stage.flagReason = `Completed in ${actualMinutes} min against a ${stage.expectedDuration} min target — under ${Math.round(FRAUD_FLAG_RATIO * 100)}% of target.`;
+    stage.flagReason = `Completed in ${actualMinutes} min against a ${stage.expectedDuration} min target, under ${Math.round(FRAUD_FLAG_RATIO * 100)}% of target.`;
   }
   if (job.stages.every((s) => s.status === 'completed')) job.status = 'completed';
 }
@@ -252,7 +252,7 @@ export function buildSeed(): OpsSnapshot {
       jobId: job.id,
       stageOrder: 1,
       title: `New job: ${job.plateNumber}`,
-      body: `${job.stages[0].name} — tap Accept to start the timer.`,
+      body: `${job.stages[0].name}. Tap Accept to start the timer.`,
       createdAt: iso(assignedMs),
       readAt: null,
     });

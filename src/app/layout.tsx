@@ -4,7 +4,7 @@ import { Providers } from '@/components/Providers';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: `${BUSINESS.name} — Operations`,
+  title: `${BUSINESS.name} · Operations`,
   description:
     'Live car wash operations: vehicle queue, worker assignment, cleaning timers and daily performance.',
 };

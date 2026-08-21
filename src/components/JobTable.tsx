@@ -78,7 +78,7 @@ export function JobTable({
                     <td><span className="plate">{job.plateNumber}</span></td>
                     <td>
                       <div className="strong">{job.customerName}</div>
-                      <div className="tiny muted">{job.phone || '—'}</div>
+                      <div className="tiny muted">{job.phone || '-'}</div>
                     </td>
                     <td>{carLabel(job.carType)}</td>
                     <td>

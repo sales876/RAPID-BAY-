@@ -32,18 +32,18 @@ export default function ReportsPage() {
 
   const range = useMemo(() => {
     switch (preset) {
-      case 'today': return { from: today, to: today, label: `Today — ${formatLongDate(today)}` };
+      case 'today': return { from: today, to: today, label: `Today · ${formatLongDate(today)}` };
       case 'yesterday': {
         const y = shiftDateKey(today, -1);
-        return { from: y, to: y, label: `Yesterday — ${formatLongDate(y)}` };
+        return { from: y, to: y, label: `Yesterday · ${formatLongDate(y)}` };
       }
       case 'week': {
         const start = startOfWeek(today);
-        return { from: start, to: today, label: `This week — ${formatLongDate(start)} to ${formatLongDate(today)}` };
+        return { from: start, to: today, label: `This week · ${formatLongDate(start)} to ${formatLongDate(today)}` };
       }
       case 'month': {
         const start = startOfMonth(today);
-        return { from: start, to: today, label: `This month — ${formatLongDate(start)} to ${formatLongDate(today)}` };
+        return { from: start, to: today, label: `This month · ${formatLongDate(start)} to ${formatLongDate(today)}` };
       }
       default:
         return { from, to, label: `${formatLongDate(from)} to ${formatLongDate(to)}` };
@@ -147,7 +147,7 @@ export default function ReportsPage() {
               label="Avg difference"
               value={
                 report.avgDifference === null
-                  ? '—'
+                  ? '-'
                   : `${report.avgDifference > 0 ? '+' : ''}${Math.round(report.avgDifference * 10) / 10} min`
               }
               tone={report.avgDifference !== null && report.avgDifference > 0 ? 'attn' : 'good'}
@@ -246,11 +246,11 @@ export default function ReportsPage() {
                     }}
                   >
                     {row.avgDifference === null
-                      ? '—'
+                      ? '-'
                       : `${row.avgDifference > 0 ? '+' : ''}${Math.round(row.avgDifference)} min`}
                   </td>
                   <td className="right mono">
-                    {row.onTimeRate === null ? '—' : `${Math.round(row.onTimeRate * 100)}%`}
+                    {row.onTimeRate === null ? '-' : `${Math.round(row.onTimeRate * 100)}%`}
                   </td>
                   <td className="right mono">{row.revenue.toLocaleString()}</td>
                 </tr>

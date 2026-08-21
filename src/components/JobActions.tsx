@@ -30,12 +30,12 @@ export function JobActions({ job }: { job: LiveJob }) {
   const stage = job.currentStage;
 
   if (job.status === 'cancelled') {
-    return <span className="tiny muted">—</span>;
+    return <span className="tiny muted">-</span>;
   }
 
   if (job.status === 'completed') {
     if (job.handoverConfirmed || !can('confirm_handover')) {
-      return <span className="tiny muted">—</span>;
+      return <span className="tiny muted">-</span>;
     }
     return (
       <button
@@ -58,7 +58,7 @@ export function JobActions({ job }: { job: LiveJob }) {
     );
   }
 
-  if (!stage) return <span className="tiny muted">—</span>;
+  if (!stage) return <span className="tiny muted">-</span>;
 
   const waiting = stage.status === 'waiting';
   const pending = stage.status === 'assigned';
@@ -91,7 +91,7 @@ export function JobActions({ job }: { job: LiveJob }) {
       await completeStage(job.id, stage.stageOrder, completedBy);
       notify(
         `${job.plateNumber} · ${stage.name} completed`,
-        `${stage.workerNames.join(' + ') || 'Unassigned'} · expected ${stage.expectedDuration} min, actual ${actual} min — ${formatPerformance(actual - stage.expectedDuration)}`,
+        `${stage.workerNames.join(' + ') || 'Unassigned'} · expected ${stage.expectedDuration} min, actual ${actual} min, ${formatPerformance(actual - stage.expectedDuration)}`,
         actual > stage.expectedDuration ? 'attn' : 'ok',
       );
       const supabase = getSupabaseClient();
@@ -207,7 +207,7 @@ export function JobActions({ job }: { job: LiveJob }) {
                       for (const id of ids) {
                         void notifyPush(supabase, { audience: 'worker', workerId: id }, {
                           title: `New job: ${job.plateNumber}`,
-                          body: `${stage.name} — tap Accept to start the timer.`,
+                          body: `${stage.name}. Tap Accept to start the timer.`,
                         });
                       }
                     };

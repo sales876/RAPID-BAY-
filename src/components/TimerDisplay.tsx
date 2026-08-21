@@ -22,7 +22,7 @@ export function TimerDisplay({
   showProgress?: boolean;
 }) {
   if (cancelled || !stage) {
-    return <div className={`timer timer-${size} timer-idle`}>—</div>;
+    return <div className={`timer timer-${size} timer-idle`}>-</div>;
   }
 
   if (stage.status === 'completed') {
@@ -31,7 +31,7 @@ export function TimerDisplay({
     return (
       <div>
         <div className={`timer timer-${size} timer-${tone === 'normal' ? 'normal' : tone}`}>
-          {stage.actualDuration ?? '—'} min
+          {stage.actualDuration ?? '-'} min
         </div>
         <div className="timer-note">
           {delta === null
